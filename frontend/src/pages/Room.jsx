@@ -187,13 +187,13 @@ export default function Room() {
 
         {started && <p>⏱ Time Left: {timeLeft}</p>}
 
-        <div className="grid grid-cols-4 gap-4 mt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mt-4">
           <div className="col-span-3">
            <canvas
               ref={canvasRef}
               width={700}
               height={400}
-              className="border bg-white rounded touch-none"
+              className="border bg-white rounded touch-none w-full h-[250px] sm:h-[350px] lg:h-[400px]"
               onPointerDown={startDraw}
               onPointerMove={draw}
               onPointerUp={endDraw}
