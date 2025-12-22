@@ -102,9 +102,13 @@ export default function Room() {
     room?.players?.[room.drawerIndex]?.username === username;
 
   const getPos = (e) => {
-    const rect = canvasRef.current.getBoundingClientRect();
-    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
-  };
+  const rect = canvasRef.current.getBoundingClientRect();
+      return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      };
+    };
+
 
   /* ---------------- DRAW ---------------- */
 
@@ -185,16 +189,17 @@ export default function Room() {
 
         <div className="grid grid-cols-4 gap-4 mt-4">
           <div className="col-span-3">
-            <canvas
+           <canvas
               ref={canvasRef}
               width={700}
               height={400}
-              className="border bg-white rounded"
-              onMouseDown={startDraw}
-              onMouseMove={draw}
-              onMouseUp={endDraw}
-              onMouseLeave={endDraw}
-            />
+              className="border bg-white rounded touch-none"
+              onPointerDown={startDraw}
+              onPointerMove={draw}
+              onPointerUp={endDraw}
+              onPointerLeave={endDraw}
+           />
+
 
             <div className="border h-40 mt-3 p-2 overflow-y-auto">
               {messages.map((m, i) => (
